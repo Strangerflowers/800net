@@ -1,0 +1,188 @@
+.register {
+  width: 100%;
+  height: 100%;
+  background-color: #F2F2F2;
+}
+
+.register .content {
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.register .content .r_top {
+  background-color: #F2F2F2;
+  width: 100%;
+  height: 80px;
+  padding: 20px 0 0 0;
+}
+
+.register .content .r_top .logo {
+  width: 250px;
+  height: 63px;
+  display: inline-block;
+}
+
+.register .content .r_top .logo a {
+  display: inline-block;
+  width: 250px;
+  height: 57px;
+  float: left;
+  background: url("../images/r_logo.jpg") no-repeat;
+}
+
+.register .content .r_top span {
+  font-size: 12px;
+  margin-top: 35px;
+  color: #666;
+  float: right;
+}
+
+.register .content .main {
+  width: 980px;
+  height: 555px;
+  background-color: #fff;
+  padding: 40px 60px;
+}
+
+.register .content .main .email {
+  float: left;
+  width: 430px;
+  height: 458px;
+}
+
+.register .content .main .email div {
+  width: 430px;
+  height: 66px;
+}
+
+.register .content .main .email div label {
+  display: inline-block;
+  text-align: right;
+  font-size: 12px;
+  width: 74px;
+  height: 36px;
+}
+
+.register .content .main .email div span {
+  display: inline-block;
+  width: 157px;
+  height: 36px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  line-height: 36px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.register .content .main .email div .icode {
+  width: 128px;
+  height: 36px;
+  margin-left: 76px;
+}
+
+.register .content .main .email div .check {
+  width: 17px;
+  height: 17px;
+  margin-left: 76px;
+}
+
+.register .content .main .email div input {
+  width: 292px;
+  height: 32px;
+  padding: 2px 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.register .content .main .email div button {
+  display: block;
+  width: 178px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #ff3b37;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 76px;
+  border-radius: 6px;
+}
+
+.register .content .main .accounts {
+  width: 430px;
+  height: 206px;
+  float: left;
+}
+
+.register .content .main .accounts .other {
+  margin-top: 56px;
+  padding: 20px 35px;
+}
+
+.register .content .main .accounts .other .s_account {
+  margin-top: 16px;
+}
+
+.register .content .main .accounts .other .s_account a {
+  width: 108px;
+  height: 35px;
+  background: #d5d5d5;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: inline-block;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 35px;
+  color: #666;
+}
+
+.register .content .main .accounts .other .s_account .more {
+  margin-left: 20px;
+  width: 35px;
+  height: 17px;
+  margin: 20px 0 0 16px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.register .content .main .accounts .other .h_account {
+  display: none;
+  margin-top: 16px;
+}
+
+.register .content .main .accounts .other .h_account a {
+  width: 108px;
+  height: 35px;
+  background: #d5d5d5;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: inline-block;
+  margin-left: 5px;
+  text-align: center;
+  line-height: 35px;
+  color: #666;
+}
+
+.register .content .bottom {
+  width: 100%;
+  height: 62px;
+  padding: 30px 0;
+}
+
+.register .content .bottom p {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+.register .content .bottom .cert {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.register .content .bottom .cert img {
+  width: 70px;
+  height: 26px;
+}
