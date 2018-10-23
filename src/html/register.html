@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="../css/register.css" />
         <link rel="stylesheet" type="text/css" href="../css/base.css" />
+        <script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../js/register.js"></script>
     </head>
     <body>
         <div class="register">
@@ -21,7 +23,7 @@
                     <div class="email fl">
                         <div class="uname">
                             <label for="uname">用户名：</label>
-                            <input type="text"class="uname" name="uname"placeholder="用户名"/>
+                            <input type="text"class="username" name="uname"placeholder="用户名"/>
                         </div>
                         <div class="password">
                             <label for="passowrd">
@@ -37,10 +39,10 @@
                         </div>
                         <div class="vCode">
                             <input type="text" class="icode"/>
-                            <span>获取验证码</span>
+                            <span class="getCode">获取验证码</span>
                         </div>
                         <div class="phoneCode">
-                            <input type="text"class="icode" /><span>获取手机验证码</span>
+                            <input type="text"class="icode" /><span class="getPhone">获取手机验证码</span>
                         </div>
                         <div class="agree">
                             <input type="checkbox" class="check" />

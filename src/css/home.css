@@ -252,6 +252,129 @@
   border-bottom: 1px solid #ccc;
 }
 
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 150px;
+  background: #fff;
+  z-index: 1000;
+  width: 370px;
+  height: 303px;
+  border: 1px solid #ccc;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left {
+  float: left;
+  width: 187px;
+  height: 303px;
+  padding-left: 10px;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 {
+  width: 219px;
+  height: 153px;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 h3 {
+  width: 185px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 30px;
+  border-bottom: 1px solid #f00;
+  margin: 0;
+  padding: 0;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 h3 a, .home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 h3 .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 h3 em {
+  color: #ccc;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 .nav_left_list1 {
+  width: 219px;
+  height: 121px;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 .nav_left_list1 ul li {
+  float: left;
+  width: auto;
+  height: 12px;
+  margin: 10px 0 6px 0;
+  border: 0;
+  line-height: 14px;
+  font-family: "microsoft yahei";
+  font-size: 12px;
+  background-color: #fff;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 .nav_left_list1 ul li a, .home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 .nav_left_list1 ul li .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 .nav_left_list1 ul li em {
+  color: #666;
+  display: inline-block;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 .nav_left_list1 ul li:hover a, .home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 .nav_left_list1 ul li:hover .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second1 .nav_left_list1 ul li:hover em {
+  color: #f00;
+  border-bottom: 1px solid #f00;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 {
+  width: 219px;
+  height: 153px;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 h3 {
+  width: 185px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 30px;
+  border-bottom: 1px solid #f00;
+  margin: 0;
+  padding: 0;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 h3 a, .home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 h3 .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 h3 em {
+  color: #ccc;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 .nav_left_list2 {
+  width: 219px;
+  height: 121px;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 .nav_left_list2 ul li {
+  float: left;
+  width: auto;
+  height: 12px;
+  margin: 10px 0 6px 0;
+  border: 0;
+  line-height: 14px;
+  font-family: "microsoft yahei";
+  font-size: 12px;
+  background-color: #fff;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 .nav_left_list2 ul li a, .home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 .nav_left_list2 ul li .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 .nav_left_list2 ul li em {
+  color: #666;
+  display: inline-block;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 .nav_left_list2 ul li:hover a, .home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 .nav_left_list2 ul li:hover .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_left .nav_pop_second2 .nav_left_list2 ul li:hover em {
+  color: #f00;
+  border-bottom: 1px solid #f00;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_right {
+  float: right;
+  width: 142px;
+  height: 290px;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li .nav_pop .nav_pop_right img {
+  width: 140px;
+  height: 93px;
+  margin-top: 5px;
+}
+
 .home .nav .nav_content .nav_main .show_nav ul li a, .home .nav .nav_content .nav_main .show_nav ul li .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .nav .nav_content .nav_main .show_nav ul li em {
   display: inline-block;
   margin: 0 10px;
@@ -268,6 +391,10 @@
 .home .nav .nav_content .nav_main .show_nav ul li a:hover, .home .nav .nav_content .nav_main .show_nav ul li .side_nav .side_content .side_bottom em:hover, .home .side_nav .side_content .side_bottom .nav .nav_content .nav_main .show_nav ul li em:hover {
   border-bottom: 1px solid #999;
   color: #f00;
+}
+
+.home .nav .nav_content .nav_main .show_nav ul li:hover .nav_pop {
+  display: block;
 }
 
 .home .banner {
@@ -291,6 +418,7 @@
 
 .home .banner .banner_content .banner_pic ul {
   position: absolute;
+  overflow: hidden;
 }
 
 .home .banner .banner_content .banner_pic ul li {
@@ -300,6 +428,54 @@
 .home .banner .banner_content .banner_pic ul li img {
   display: inline-block;
   height: 304px;
+}
+
+.home .banner .banner_content .banner_pic .page {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+}
+
+.home .banner .banner_content .banner_pic .page span {
+  display: inline-block;
+  margin: 0 5px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.home .banner .banner_content .banner_pic .page span.active {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+.home .banner .banner_content .banner_pic span {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding: 50px 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.home .banner .banner_content .banner_pic span:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+.home .banner .banner_content .banner_pic span.btn-next {
+  left: auto;
+  right: 0;
+}
+
+.home .banner .banner_content .banner_pic:hover span {
+  display: block;
 }
 
 .home .banner .banner_content .banner_right {
@@ -671,7 +847,7 @@
 
 .home .home_goodslist {
   width: 100%;
-  height: 780px;
+  display: inline-block;
 }
 
 .home .home_goodslist .gList_content {
@@ -766,7 +942,11 @@
   margin-left: 20px;
   margin-top: 10px;
   width: 240px;
-  height: 30px;
+  height: 25px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .home .home_goodslist .gList_content .good ul li a, .home .home_goodslist .gList_content .good ul li .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .home_goodslist .gList_content .good ul li em {
