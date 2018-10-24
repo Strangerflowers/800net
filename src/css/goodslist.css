@@ -380,7 +380,6 @@
 
 .home .goodslist .goodslist_content .good_list {
   width: 100%;
-  height: 1000px;
 }
 
 .home .goodslist .goodslist_content .good_list ul li {
@@ -483,6 +482,7 @@
   width: 1200px;
   margin: 20px 0;
   padding: 20px 0 28px;
+  display: inline-block;
 }
 
 .home .goodslist .goodslist_content .good_page .page_list {
@@ -545,6 +545,7 @@
 .home .goodslist .goodslist_content .hot_sale {
   width: 100%;
   height: 200px;
+  display: inline-block;
 }
 
 .home .goodslist .goodslist_content .hot_sale .hot_content {

@@ -2,11 +2,10 @@
 * @Author: Marte
 * @Date:   2018-10-23 14:17:27
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-23 19:58:08
+* @Last Modified time: 2018-10-24 17:14:40
 */
 
 document.addEventListener('DOMContentLoaded',()=>{
-            
             
             let banner = document.getElementsByClassName('banner_pic')[0];
             let ul = banner.children[0];
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             let page = document.createElement('div');
             page.className = 'page';
             for(let i=0;i<len-1;i++){
-                let span = document.createElement('span');
+                let span = document.createElement('p');
                 span.innerText = i+1;
                 if(i===index){
                     span.className = 'active';
@@ -142,11 +141,40 @@ document.addEventListener('DOMContentLoaded',()=>{
             })
         });
 
+    // 头部吸顶
+        window.onscroll=function(){
+            var scrollY = window.scrollY;
+            var tool=document.querySelector(".tool_content");
+            var header=document.querySelector(".header");
+            var xiding=document.querySelector(".xiding");
+            var nav=document.querySelector(".nav");
+            var banner=document.querySelector(".banner");
+            var side=document.querySelector(".side_nav");
 
+            if(scrollY>=(tool.offsetHeight+header.offsetHeight+nav.offsetHeight+banner.offsetHeight)){
+                
+                xiding.style.display="block";
+                side.style.display="block";
+             
+            }else{
+                
+                xiding.style.display="none";
+                side.style.display="none";
+            }
+       
+        }
 
-
-
-
+           var toTop = document.querySelector('.toTop');
+            // 点击返回顶部
+            toTop.onclick = function () {
+                var timer = setInterval(function () {
+                    var speed = Math.ceil(window.scrollY / 5);
+                    scrollBy(0, -speed);
+                    if (window.scrollY <= 0) {
+                        clearInterval(timer);
+                    }
+                }, 30)
+            }
 
 
 })

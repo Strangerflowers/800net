@@ -86,6 +86,19 @@
   font-size: 12px;
 }
 
+.register .content .main_login .main_right .login .login_news .login_account .uname {
+  position: relative;
+}
+
+.register .content .main_login .main_right .login .login_news .login_account .uname p {
+  display: none;
+  font-size: 12px;
+  color: #f00;
+  position: absolute;
+  top: 75px;
+  left: 30%;
+}
+
 .register .content .main_login .main_right .login .login_news .login_account div {
   width: 242px;
   height: 18px;

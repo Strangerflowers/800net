@@ -3,54 +3,56 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="../css/login.css" />
-       
-
         <link rel="stylesheet" type="text/css" href="../css/base.css" />
+        <script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/login.js"></script>
     </head>
     <body>
         <div class="register">
             <div class="content">
                 <div class="r_top">
                     <div class="logo">
-                        <a href="#"></a>
+                        <a href="../index.html"></a>
                     </div>
                     <span>
                         已经有团800或800账号了？
-                        <a href="#">去登陆</a>
+                        <a href="../html/register.html">去注册</a>
                     </span>
                 </div>
                 <div class="main_login">
                     <div class="main_left">
                         <div class="left_pic">
                             <a href="#">
-                            <img src="../images/login2.jpg" height="120" width="120" alt="" />
-                        </a>
+                                <img src="../images/login2.jpg" height="120" width="120" alt="" />
+                            </a>
                         </div>
-                        
                     </div>
                     <div class="main_right">
                         <div class="login">
                             <div class="login_news">
                                 <h3>
-                                    <input type="radio" class="radios" name="loginppr"/>
+                                    <input type="radio" class="radios" checked="true" name="loginppr"/>
                                     <label for="loginphone">折800账号登陆</label>
-                                    <input type="radio" class="radios" name="loginphone"/>
+                                    <input type="radio" class="radios"  name="loginphone"/>
                                     <label for="loginppr">手机动态登陆</label>
                                 </h3>
                                 <div class="login_account">
                                     <div class="uname">
-                                        <input type="text"class="uname" name="uname"placeholder="用户名"/>
+                                        <input type="text"class="username" name="uname"placeholder="用户名"/>
+                                        <p class="err">该用户名还未注册</p>
+
                                     </div>
                                     <div class="password">
                                         
-                                        <input type="password" class="password" name="password" placeholder="请输入6~18位的字母与数字" />
+                                        <input type="password" class="passwords" name="password" placeholder="请输入6~18位的字母与数字" />
                                     </div>
                                      <div class="vCode">
                                         <input type="text" class="icode"/>
                                         <span class="hcode">获取验证码</span>
                                     </div>
                                     <div class="btn">
-                                        <button>登陆</button>
+                                        <button class="btns">登陆</button>
                                         <a href="#"class="forget">忘记密码？</a>
                                     </div>
                                     <div class="other_login">
