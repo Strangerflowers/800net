@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="../css/base.css" />
         <link rel="stylesheet" type="text/css" href="../css/details.css" />
+        <link rel="stylesheet" href="../lib/jquery-lxzoom/jquery.lxzoom.css">
+        <!-- 1.引入jquery -->
+        <script src="../lib/jquery-3.2.1.js"></script>
+        <!-- 2.引入插入 -->
+        <script src="../lib/jquery-lxzoom/jquery.lxzoom.js"></script>
+        <script type="text/javascript" src="../js/details.js"></script>
     </head>
     <body>
         <div class="home">
@@ -180,45 +186,45 @@
                     </div>
                     <div class="details_pic">
                         <div class="details_left">
-                            <div class="big_pic">
-                                <img src="../images/d1.jpg" height="400" width="400" alt="" />
+                            <!-- <div class="big_pic">
+                                <img src="../images/d1.jpg" height="400" width="400" data-big="../images/d1.jpg" />
                             </div>
                             <div class="small_pic">
                                 <!-- <i><</i> -->
-                                <ul>
+                               <!--  <ul>
                                     <li>
-                                        <a href="#">
-                                            <img src="../images/d1.jpg" alt="" />
-                                        </a>
+                                        <a href="#"> -->
+                                            <!-- <img  class="small1" src="../images/d1.jpg" data-big="../images/d1.jpg" /> -->
+                                   <!--      </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <img src="../images/d2.jpg" alt="" />
-                                        </a>
+                                        <a href="#"> -->
+                                            <!-- <img class="small2" src="../images/d2.jpg" data-big="../images/d2.jpg"  /> -->
+                                   <!--      </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <img src="../images/d3.jpg" alt="" />
-                                        </a>
+                                        <a href="#"> -->
+                                            <!-- <img class="small3" src="../images/d3.jpg" data-big="../images/d3.jpg"  /> -->
+                                    <!--     </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <img src="../images/d4.jpg" alt="" />
-                                        </a>
+                                        <a href="#"> -->
+                                            <!-- <img class="small4" src="../images/d4.jpg" a data-big="../images/d4.jpg" /> -->
+                                  <!--       </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <img src="../images/d5.jpg" alt="" />
-                                        </a>
+                                        <a href="#"> -->
+                                            <!-- <img class="small5" src="../images/d5.jpg"  data-big="../images/d5.jpg"/> -->
+                                     <!--    </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <img src="../images/d6.jpg" alt="" />
-                                        </a>
-                                    </li>
-                                </ul>
+                                        <a href="#"> -->
+                                          <!--   <img  class="small6"src="../images/d6.jpg"  data-big="../images/d6.jpg" /> -->
+                                    <!--     </a> -->
+                                <!--     </li>
+                                </ul> --> -->
                                 <!-- <i>></i> -->
-                            </div>
+                            <!-- </div> -->
                         </div>
                         <div class="details_right">
                             <div class="newslist">
@@ -271,9 +277,9 @@
                                     </div> 
                                     <div class="d_qty">
                                         <h3>数量</h3>
-                                        <input type="button" value="-" class="jia"/>
-                                        <input type="text"class="i_qty"  />
-                                        <input type="button" value="+"  class="jian"/>
+                                        <input type="button" value="-" class="jian"/>
+                                        <input type="text" value="1" class="i_qty"  />
+                                        <input type="button" value="+"  class="jia"/>
                                         <p>库存<span>66</span>件</p>
                                     </div>
                                     <div class="goumai">

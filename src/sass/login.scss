@@ -1,0 +1,232 @@
+.register{
+    width:100%;
+    height: 100%;
+    background-color:#F2F2F2;
+        .content{
+            width: 980px;
+            height: 100%;
+            margin:0 auto;
+
+            .r_top{
+                background-color:#F2F2F2;
+                width: 100%;
+                height: 80px;
+                padding:20px 0 0 0;
+                .logo{
+                    width: 250px;
+                    height: 63px;
+                    display:inline-block;
+                    a{
+                        display: inline-block;
+                        width: 250px;
+                        height: 57px;
+                        float:left;
+                        background:url("../images/r_logo.jpg") no-repeat;
+                    }
+                }
+                span{
+                    font-size:12px;
+                    margin-top:35px;
+                    color:#666;
+                    float:right;
+                }
+            }
+    
+            .main_login{
+                width: 100%;
+                height: 550px;
+                margin:10px 0;
+                background-color:#ffffff;
+                .main_left{
+                    width: 460px;
+                    height: 330px;
+                    margin:60px 0 0 80px;
+                    float:left;
+                    
+                   
+                   .left_pic{
+                        width: 460px;
+                        height: 330px;
+                        display:inline-block;
+                        img{
+                            display:inline-block;
+                            width: 460px;
+                            height: 330px;
+                        }
+                   }
+                }
+
+                .main_right{
+                    float:right;
+                    width: 340px;
+                    height: 330px;
+                    margin:60px 80px 0 0;
+
+                    .login{
+                        padding:38px 0 20px 0;  
+                        width: 312px;
+                        height: 400px;
+                        margin-left:30px;
+                        border:1px solid #ccc;
+                        .login_news{
+                            h3{
+                            width: 290px;
+                            height: 17px;
+                            padding-left:20px;
+                            font-size:12px;
+                            }
+                            .login_account{
+                                .uname{
+                                    position:relative;
+                                    p{
+                                        display:none;
+                                        font-size:12px;
+                                        color:#f00;
+                                        position:absolute;
+                                        top:75px;
+                                        left:30%;
+                                    }
+                                }
+                                div{
+                                    width: 242px;
+                                    height: 18px;
+                                    margin:0 15px  0 5px;
+                                    padding:35px 10px 10px 10px;
+
+                                    label{
+                                        display:inline-block;
+                                        text-align:right;
+                                        font-size:12px;
+                                        width: 74px;
+                                        height: 36px
+
+                                    }
+                                    .hcode{
+                                        display:inline-block;
+                                        width: 110px;
+                                        height: 36px;
+                                        margin-left:10px;
+                                        border:1px solid #ccc;
+                                        font-size:14px;
+                                        border-radius:6px;
+                                        line-height:36px;
+                                        text-align:center;
+                                        vertical-align:middle;
+
+                                    }
+                                    .icode{
+                                        width: 110px;
+                                        height: 36px;
+                                       
+                                    }
+                                    .check{
+                                        width: 17px;
+                                        height: 17px;
+                                        margin-left:76px;
+                                    }
+                                    input{
+                                        width: 240px;
+                                        height: 40px;
+                                        
+                                        border-radius:5px;
+                                        border:1px solid #ccc;
+                                    }
+                                    button{
+                                        
+                                        width: 110px;
+                                        height: 41px;
+                                        line-height:30px;
+                                        background-color:#ff3b37;
+                                        color:#fff;
+                                        text-align:center;
+                                        border-radius:6px;
+                                    }
+                                    .forget{
+                                        color:#666;
+                                        margin-left:20px;
+                                        font-size:12px;
+                                        vertical-align:bottom;
+                                    }
+                                }
+                                .other_login{
+                                    width: 312px;
+                                    height: 85px;
+                                    h2{
+                                        font-size:12px;
+                                        line-height:16px;
+                                        height: 16px;
+                                    }
+                                    .s_account{
+                                        margin-top:16px;
+                                        a{
+                                            width: 108px;
+                                            height: 30px;
+                                            background:#d5d5d5;
+                                            border:1px solid #ccc;
+                                            border-radius:6px;
+                                            display:inline-block;
+                                            margin-left:5px; 
+                                            text-align:center;
+                                            line-height:28px;
+                                            color:#666;
+                                        }
+                                    }
+
+                                    .h_account{
+                                        display:none;
+                                        margin-top:16px;
+                                         a{
+                                            width: 108px;
+                                            height: 24px;
+                                            background:#d5d5d5;
+                                            border:1px solid #ccc;
+                                            border-radius:6px;
+                                            display:inline-block;
+                                            margin-left:5px; 
+                                            text-align:center;
+                                            line-height:20px;
+                                            color:#666;
+
+                                        }
+                                    }
+
+                                    .more{
+                                        // margin-left:20px;
+                                        width: 35px;
+                                        height: 17px;
+                                        display: inline-block;
+                                        cursor: pointer;
+                                        
+                                        font-size:12px;
+                                        border:1px solid #fff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+
+            .bottom{
+                width: 100%;
+                height: 62px;
+                padding:30px 0;
+                p{
+                    font-size:12px;
+                    color:#666;
+                    text-align:center;
+                    margin-top:20px;
+                }
+                .cert{
+                     margin-top:5px;
+                    text-align:center;
+                    img{
+                        width: 70px;
+                        height: 26px;
+                   
+                    }
+                }
+            }
+        }
+}
