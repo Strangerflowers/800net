@@ -2,17 +2,20 @@
 * @Author: Marte
 * @Date:   2018-10-24 17:15:49
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-25 09:52:04
+* @Last Modified time: 2018-10-26 15:22:58
 */
 
 
 jQuery(function($){
     var $ul_list=$(".ul_list");
+    var pageNo=1;
+    var qty=3;
     $.ajax({
         type:"get",
-        url:"../api/goodslist.php",
+        url:"../api/good_page.php",
         data:{
-
+            pageNo:pageNo,
+            qty:qty
         },
         success:function(data){
             $arr=JSON.parse(data);
@@ -20,7 +23,7 @@ jQuery(function($){
             function render($arr){
                 // console.log($arr)
                 var $res='';
-                $.map($arr,function(item,idx){
+                $.map($arr.data,function(item,idx){
                     return  $res+=`<li date-id="${item.id}">
                                     <a href="#">
                                         <img src="${item.imgurl}" alt="" \ />
@@ -34,11 +37,67 @@ jQuery(function($){
                 }).join("");
 
                 $ul_list.empty().append($res);
+                // 创建分页
+                var page=document.querySelector(".page");
+                // 每次创建之前都要清空：
+                page.innerHTML='';
+                var pagelen=Math.ceil($arr.len/$arr.qty);
+                console.log(pagelen);
+                for(let i=0;i<pagelen;i++){
+                    var span=document.createElement('span');
+                    span.innerText=i+1;
+                    if(i===$arr.pageNo-1){
+                        console.log($arr.pageNo-1);
+                        span.className='active';
+                        console.log(i);
+                    }
+                    page.appendChild(span);
+                }
             }
 
-               //点击价格按钮排序
-                var priceBtn = document.getElementsByClassName("price")[0];
+            var page=document.querySelector(".page");
+            page.onclick=function(e){
+                if(e.target.tagName.toLowerCase()==="span"){
+                    pageNo = e.target.innerHTML;
+                    console.log(pageNo);
+                    $.ajax({
+                        type:"get",
+                        url:"../api/good_page.php",
+                        data:{
+                            pageNo:pageNo,
+                            qty:qty
+                        },
+                        success:function(data){
+                            $arr=JSON.parse(data);
+                            render($arr);
+                        }
+                    })
+                }
                 
+            }
+  
+
+        }
+
+
+
+       
+
+
+
+
+
+    })
+    
+
+     $.ajax({
+            type:"get",
+            url:"../api/goodslist.php",
+            data:{},
+            success:function(data){
+                $arr=JSON.parse(data);
+                //点击价格按钮排序
+                var priceBtn = document.getElementsByClassName("price")[0];
                 //声明一个变量，告知当前是价格升序还是降序排名
                 var upLogoP = true;
                 priceBtn.onclick = function(){
@@ -58,7 +117,6 @@ jQuery(function($){
                     }
                     upLogoP = !upLogoP;
                 }
-
                 //点击最新按钮排序（按时间排序）
                 var dateBtn = document.getElementsByClassName("newest")[0];
                 
@@ -77,18 +135,15 @@ jQuery(function($){
                         return new Date(b.reg_time).getTime() - new Date(a.reg_time).getTime();
                         });
                        
-                        render(datel)
+                        render(datel);
                        
                     }
                     upLogoD = !upLogoD;
-               
-
                 }
 
-
-
-        }
-    })
+            }
+        })
+   
     
     
 

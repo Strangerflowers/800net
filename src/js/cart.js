@@ -2,12 +2,13 @@
 * @Author: Marte
 * @Date:   2018-10-25 15:06:11
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-25 21:22:48
+* @Last Modified time: 2018-10-26 20:26:17
 */
 jQuery(function($){
     var $list=$(".list");
     var $ul=$(".cartlist");
-    
+    var $total_price=$(".total_price");
+    var c_qty=$(".c_qty");
     $.ajax({
         type:"get",
         url:"../api/cart.php",
@@ -21,12 +22,11 @@ jQuery(function($){
             // console.log(data);
             render(arr);
             function render(arr){
-              
                 var res='';
                 $.map(arr,function(item){
                 total=item.qty*item.sale;
                 return res+=`<li date-guid="${item.id}">
-                            <div class="duoxuan2 fl"><input type="checkbox" id="checkbox" /></div>
+                            <div class="duoxuan2 fl"><input type="checkbox" class="checkbox" /></div>
                             <div class="tupian fl">     
                                 <img src="${item.imgurl}" alt="" />
                             </div>
@@ -56,23 +56,26 @@ jQuery(function($){
             // $(".plDel").on("click",function(e){
 
             // })
-            var allremove=document.querySelector(".plDel");
+            // 清空购物车
+            var allremove=document.querySelector(".removeAll");
             allremove.onclick=function(e){
-                var target=e.target || e.srcElement;
-                console.log(target);
-                if(target.className==="plDel"){
-                    $.ajax({
-                        type:'get',
-                        url:'../api/cart_del.php',
-                        data:{
-                            empty:"empty"
-                        },
-                        success:function(data){
-                            console.log(data);
-                            var data=JSON.parse(data);
-                            render(data);
-                        }
-                    })
+                if(confirm("您确定要清空购物车吗？")){
+                    var target=e.target || e.srcElement;
+                // console.log(target);
+                    if(target.className==="removeAll"){
+                        $.ajax({
+                            type:'get',
+                            url:'../api/cart_del.php',
+                            data:{
+                                empty:"empty"
+                            },
+                            success:function(data){
+                                // console.log(data);
+                                var data=JSON.parse(data);
+                                render(data);
+                            }
+                        })
+                    }
                 }
             }
 
@@ -87,11 +90,11 @@ jQuery(function($){
             // for(let j=0;j<btnqty.length;j++){
             btnqty.onclick=function(e){
                 var target=e.target || e.srcElement;
-                console.log(target);
+                // console.log(target);
                 // 点击删除按钮，删除单个商品
                 if(target.parentElement.className==='delsingle'){
                     var currentLi=target.parentElement.parentElement.parentElement;
-                    console.log(currentLi);
+                    // console.log(currentLi);
                     var currentId=currentLi.getAttribute("date-guid");
                     $.ajax({
                         type:"get",
@@ -111,59 +114,115 @@ jQuery(function($){
                 // 判断点击的是否为“-”，若是则qty--
                 if(target.className==="jian"){
                     var currentLi=target.parentElement.parentElement;
+                    console.log(currentLi);
                     var currentId=currentLi.getAttribute("date-guid");
-                    for(let i=0;i<arr.length;i++){
-                        if(arr[i].id===currentId){
-                          
-                            arr[i].qty--;
-                            if(arr[i].qty<0){
-                                return ;
-                            }
+                    let ci_qty = currentLi.querySelector('.ci_qty').value;
+                    ci_qty--;
+                   
                             $.ajax({
                                 type:'get',
                                 url:'../api/cart_del.php',
                                 data:{
                                     currentId:currentId,
-                                    qty:arr[i].qty
+                                    qty: ci_qty
                                 },
                                 success:function(data){
-                                    var data=JSON.parse(data);
-                                    render(data);
+                                    var _data = JSON.parse(data);
+                                    render(_data);
                                 }
                             })
-                        }
-                    }
+                   
                 }
                 
                 if(target.className==="jia"){
                     var currentLi=target.parentElement.parentElement;
-                    // console.log(currentLi);
+                    console.log(currentLi);
                     var currentId=currentLi.getAttribute("date-guid");
-                    // console.log(currentId);
-                    for(let i=0;i<arr.length;i++){
-                        if(arr[i].id===currentId){
-                            console.log(arr[i]);
-                            arr[i].qty++;
+                    let ci_qty = currentLi.querySelector('.ci_qty').value;
+                    ci_qty++;
+                    
                             $.ajax({
                                 type:'get',
                                 url:'../api/cart_del.php',
                                 data:{
                                     currentId:currentId,
-                                    qty:arr[i].qty
+                                    qty: ci_qty
                                 },
                                 success:function(data){
                                     var data=JSON.parse(data);
                                     render(data);
                                 }
                             })
-                        }
-                    }
+                  
                 }
 
                 
             }
-          
+
+            // 多选框的操作
+            var $all=$(".all");
+            var $sCheck=$ul.find(".checkbox");
+            var $delAll=$(".delAll");
+            console.log($sCheck);
+            var $btn=$(".cart_content");
+            console.log(999);
+            $all.on("click",function(){
+               
+                $sCheck.prop("checked",this.checked).parents("li").toggleClass('selected');
+                $delAll.prop("checked",this.checked);
+                // $total_price.html()
+                console.log($sCheck.prop("checked",this.checked));
+            })
+            // 点击单个li，高亮当前li
+            $btn.on("click","li",function(){
+                $(this).toggleClass('selected');
+                $(this).find(":checkbox").prop("checked",$(this).hasClass('selected'));
+                changeAllChecked();
+            })
+            // 5.封装函数，判断$sCheck的元素个数与被选中的多选框的个数，如果一致，总选框状态true。如果不一致，就为false
+            function changeAllChecked(){
+                var len = $sCheck.length;
+                var checkedlen = $sCheck.filter(":checked").length;
+                if(len == checkedlen){
+                    $all.prop("checked",true);
+                    $delAll.prop("checked",true);
+                }else{
+                    $all.prop("checked",false);
+                    $delAll.prop("checked",false);
+                }
+            }
+
+
+           // 删除多个
+        $('.plremove').click(()=>{
+            if(confirm('您确定要删除选中的商品吗？')){
+                $sCheck.each((idx,item)=>{
+                    if(item.checked){
+                        var id = $(item).parents("li").attr('date-guid')*1;
+                        console.log(id);
+                        $.get('../api/cart_del.php',{id:id},function(data){
+                            // console.log(data);
+                            // var res=JSON.parse(data);
+                            // render(res);
+                        })
+                        $(item).parents('li').remove();
+                    }
+                    
+                })
+            }
+        })
             
         }
+
+
+
+
+
+
+
     })
+    
+
+
+    
 })

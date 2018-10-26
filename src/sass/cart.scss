@@ -238,8 +238,13 @@
                                 height: 93px;
                                 background: #FBFBFB;
                                 padding:20px 20px 0 20px;
+                                &.selected{
+                                    background-color:#fdf4f6;
+                                    border: 1px solid #ff6767;
+                                }
                                 .duoxuan{
                                     margin-right:5px;
+
                                 }
                                 .tupian{
                                     img{

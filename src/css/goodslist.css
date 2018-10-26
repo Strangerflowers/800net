@@ -486,7 +486,6 @@
 }
 
 .home .goodslist .goodslist_content .good_page .page_list {
-  width: 500px;
   height: 42px;
   margin: 0 auto;
   margin-bottom: 22px;
@@ -494,9 +493,32 @@
   vertical-align: middle;
 }
 
-.home .goodslist .goodslist_content .good_page .page_list .page_pre {
+.home .goodslist .goodslist_content .good_page .page_list .page {
+  display: inline-block;
+  max-width: 350px;
+  height: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: -19px;
+}
+
+.home .goodslist .goodslist_content .good_page .page_list .page span {
+  display: inline-block;
+  margin: 5px;
   width: 40px;
-  width: 30px;
+  line-height: 1.8;
+  text-align: center;
+  background-color: #dfdfdf;
+  color: #666;
+}
+
+.home .goodslist .goodslist_content .good_page .page_list .page span.active {
+  background-color: #fc0;
+  color: #fff;
+}
+
+.home .goodslist .goodslist_content .good_page .page_list .page_pre {
   background: url(../images/page1.png) 0 0 no-repeat;
 }
 
@@ -511,8 +533,6 @@
 }
 
 .home .goodslist .goodslist_content .good_page .page_list .page_next {
-  width: 40px;
-  width: 30px;
   background: url(../images/page1.png) -46px 0 no-repeat;
 }
 

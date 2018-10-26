@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-10-24 20:45:34
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-25 15:04:04
+* @Last Modified time: 2018-10-26 21:13:15
 */
 
 jQuery(function($){
@@ -56,17 +56,13 @@ jQuery(function($){
                 if(target.className==="jian"){
                     obj.qty--;
                     qty.value=obj.qty;
-                    total=obj.qty*obj.sale;
-                    obj.total=total;
-                    // console.log("total",total);
+                    
                 }
                 // 判断点击的是否为“+”，若是则qty++：
                 if(target.className==="jia"){
                     obj.qty++;
                     qty.value=obj.qty;
-                    total=obj.qty*obj.sale;
-                    obj.total=total;
-                    // console.log("total",total);
+                    
                 }
             }
            
@@ -77,6 +73,9 @@ jQuery(function($){
             var lis=document.querySelectorAll(".size span");
             var lic=document.querySelectorAll(".color span");
             // 选取颜色
+            lic[0].style.border="1px solid #f00";
+            obj.color=lic[0].innerText;
+
             color.onclick=function(e){
                 console.log(e.target);
                 if(e.target.tagName.toLowerCase()==='span'){
@@ -88,6 +87,9 @@ jQuery(function($){
                 }
             }
             // 选取尺码
+            lis[0].style.border="1px solid #f00";
+            obj.size=lis[0].innerText;
+
             size.onclick=function(e){
                 if(e.target.tagName.toLowerCase()==='span'){
                     for(let i=0;i<lis.length;i++){
@@ -102,29 +104,49 @@ jQuery(function($){
             console.log(obj);
             // var tocart=document.querySelector(".add2cart");
             $(".add2cart").on("click",function(event){
-                var target =event.target;
-                console.log(target.className);
-                if(target.className==="add2cart"){
-                    $.ajax({
-                        type:"get",
-                        url:"../api/details.php",
-                        data:{
-                            currentId:obj.id,
-                            Img:obj.imgurl,
-                            username:obj.name,
-                            color:obj.color,
-                            size:obj.size,
-                            qty:obj.qty,
-                            price:obj.price,
-                            sale:obj.sale,
+               
 
-                        },
-                        success:function(data){
-                            console.log(data);
-                            location.href="../html/cart.html";
+               $.ajax({
+                    type:"get",
+                    url:"../api/cart.php",
+                    data:{},
+                    success:function(data){
+                        var res=JSON.parse(data);
+                        // console.log(res);
+                        var idx=res.filter(function(index){
+                            // console.log(index.id,params);
+                            return index.id===params;
+                        });
+                        console.log(idx);
+                        if(idx.length >0){
+                            idx[0].qty++;
+                        }else{
+                            var target =event.target;
+                            console.log(target.className);
+                            if(target.className==="add2cart"){
+                                $.ajax({
+                                    type:"get",
+                                    url:"../api/details.php",
+                                    data:{
+                                        currentId:obj.id,
+                                        Img:obj.imgurl,
+                                        username:obj.name,
+                                        color:obj.color,
+                                        size:obj.size,
+                                        qty:qty.value,
+                                        price:obj.price,
+                                        sale:obj.sale,
+                                    },
+                                    success:function(data){
+                                        console.log(data);
+                                        location.href="../html/cart.html";
+                                    }
+                                })
+                            }
                         }
-                    })
-                }
+                    }
+               })
+                
             })
 
 

@@ -463,15 +463,39 @@
                 display:inline-block;
 
                 .page_list{
-                    width: 500px;
+                    // width: 500px;
                     height: 42px;
                     margin:0 auto;
                     margin-bottom: 22px;
                     text-align: center;
                     vertical-align: middle;
+                    .page{
+                        display:inline-block;
+                        max-width: 350px;
+                       
+                        height:40px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        margin-bottom:-19px;
+                        span{
+                            display:inline-block;
+                            margin:5px;
+                            width:40px;
+                            line-height:1.8;
+                            text-align: center;
+                            background-color:#dfdfdf;
+                            color:#666;
+                            
+                            &.active{
+                                background-color:#fc0;
+                                color:#fff;
+                            }
+                        }
+                    }
                     .page_pre{
-                        width: 40px;
-                        width: 30px;
+                        // width: 40px;
+                        // width: 30px;
                         background: url(../images/page1.png) 0 0 no-repeat;
                         a{
                             float: none;
@@ -484,8 +508,8 @@
                         }
                     }
                     .page_next{
-                        width: 40px;
-                        width: 30px;
+                        // width: 40px;
+                        // width: 30px;
                         background: url(../images/page1.png) -46px 0 no-repeat;
                         a{
                             float: none;

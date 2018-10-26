@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-10-23 14:17:27
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-24 17:14:40
+* @Last Modified time: 2018-10-26 10:07:34
 */
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                     var $res='';
                     $.map($arr,function(item,idx){
                         return  $res+=` <li>
-                                <a href="#">
+                                <a href="html/goodslist.html">
                                     <img src="${item.imgurl}" alt="" \ />
                                 </a>
                                 <p><a href="#">${item.name}</a><span class="fr">剩余4天</span></p>

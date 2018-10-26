@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-10-23 20:02:09
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-25 14:28:14
+* @Last Modified time: 2018-10-26 09:13:07
 */
 
 jQuery(function($){
@@ -77,10 +77,11 @@ jQuery(function($){
             alert('短信验证码有误');
             return false;  
         }
-        // if(!checkbox.checked){                      
-        //     alert('请勾选协议');
-        //     return this;
-        // }
+      
+         if(!checkbox[0].checked){                      
+            alert('请勾选协议');
+            return ;
+        }
 
       
            
