@@ -342,6 +342,7 @@
                     .newslist{
                         width: 549px;
                         height: 520px;
+                        display:inline-block;
                         .new_head{
                             width: 549px;
                             height: 42px;
@@ -496,12 +497,20 @@
                     }
                     .evaluate{
                         float:right;
+                        width: 190px;
                     }
                 }
             }
         }
     }
-    
+    .big{
+        width: 100%;
+        a{
+            display:block;
+            width: 980px;
+            margin:0 auto;
+        }
+    }
 
     .side_nav{
         // display:none;

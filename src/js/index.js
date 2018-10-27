@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-10-23 14:17:27
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-26 10:07:34
+* @Last Modified time: 2018-10-27 18:06:29
 */
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -163,6 +163,22 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
        
         }
+
+
+        // var home_qty=document.querySelector(".home_qty");
+        var $home_qty=$(".home_qty");
+        $.ajax({
+            type:"get",
+            url:"api/cart.php",
+            data:{
+
+            },
+            success:function(data){
+                var res=JSON.parse(data);
+                console.log(res.length);
+                $home_qty.html(res.length);
+            }
+        })
 
            var toTop = document.querySelector('.toTop');
             // 点击返回顶部

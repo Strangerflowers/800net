@@ -1,37 +1,60 @@
 <?php
 /**
  * @Author: Marte
- * @Date:   2018-10-24 19:21:12
+ * @Date:   2018-10-26 10:19:34
  * @Last Modified by:   Marte
- * @Last Modified time: 2018-10-26 20:01:17
-*/
- // include 'connect.php';
+ * @Last Modified time: 2018-10-27 17:05:39
+ */
 
- //    header('Access-Control-Allow-Origin: *');
- //    // $num = isset($_GET['num']) ? $_GET['num'] : '';
- //    $id = isset($_GET['id']) ? $_GET['id'] : '';
- //    // $phone = isset($_GET['phone']) ? $_GET['phone'] : '';
+include 'connect.php';
 
- //    $sql = "delete FROM cart WHERE id='$id'";
- //    // 获取查询结果
- // //    $result = $con->query($sql);
- //    $sql = "select * from cart";
 
- // //        $result=$con->query($sql);
+$price=isset($_GET["price"]) ? $_GET["price"] : "";
+$data=isset($_GET["data"]) ? $_GET["data"] : "";
+$xl=isset($_GET["xl"]) ? $_GET["xl"] : "";
 
- //        $res = $result->fetch_all(MYSQLI_ASSOC);
 
- //        echo json_encode($res,JSON_UNESCAPED_UNICODE);
-    // if ($result) {
-    //     echo "yes";
-    // } else {
-    //     echo "Error: " . $sql . "<br>" . $con->error;
-    // }
+// $sql = 'select * from goodslist';
+
+// var_dump($price);
+if($price==="true"){
+
+    $sql = 'select * from goodslist order by sale desc';
     
 
-    // // 释放查询内存(销毁)
-    // // $result->free();
+}else if($price=='false'){
+    $sql = 'select * from goodslist order by sale asc';
+    
+}
+if($data=="true"){
 
-    // //关闭连接
-    // $con->close();
+    $sql = 'select * from goodslist order by reg_time desc';
+
+}else if($data=='false'){
+
+    $sql = 'select * from goodslist order by reg_time asc';
+
+}
+if($xl=="true"){
+
+    $sql = 'select * from goodslist order by s_volum desc';
+
+}else if($xl=='false'){
+
+    $sql = 'select * from goodslist order by s_volum asc';
+
+}
+    // var_dump($sql);
+    $result=$con->query($sql);
+     
+    $res = $result->fetch_all(MYSQLI_ASSOC);
+
+    echo json_encode($res,JSON_UNESCAPED_UNICODE);
+
+
+
+
+
+
+    
 ?>

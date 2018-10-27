@@ -2,12 +2,13 @@
 * @Author: Marte
 * @Date:   2018-10-25 15:06:11
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-26 20:26:17
+* @Last Modified time: 2018-10-27 18:08:56
 */
 jQuery(function($){
     var $list=$(".list");
     var $ul=$(".cartlist");
     var $total_price=$(".total_price");
+    var sum=0;
     var c_qty=$(".c_qty");
     $.ajax({
         type:"get",
@@ -44,7 +45,7 @@ jQuery(function($){
                                 <input type="text"class="ci_qty"  value="${item.qty}" />
                                 <input type="button" value="+"  class="jia"/>
                             </div>
-                            <div class="sale zongjia fl">￥：${total}</div>
+                            <div class="sale zongjia fl">￥：<span class="totalAll"> ${total}</span></div>
                             <div class="shoucang fl">
                                 <p class="delsingle"><a href="#">删除</a></p>
                                 <p><a href="#">移入收藏夹</a></p>
@@ -161,23 +162,49 @@ jQuery(function($){
 
             // 多选框的操作
             var $all=$(".all");
+            var $totalAll=$(".totalAll");
             var $sCheck=$ul.find(".checkbox");
             var $delAll=$(".delAll");
-            console.log($sCheck);
+            // console.log($sCheck);
             var $btn=$(".cart_content");
             console.log(999);
+
             $all.on("click",function(){
                
                 $sCheck.prop("checked",this.checked).parents("li").toggleClass('selected');
                 $delAll.prop("checked",this.checked);
-                // $total_price.html()
-                console.log($sCheck.prop("checked",this.checked));
+                $sCheck.each((idx,item)=>{
+                    console.log(item);
+                    if(item.checked){
+                        sum += $(item).parents("li").find('.totalAll').html()*1;
+                        $sCheck.prop("checked",this.checked)
+                        console.log(sum);
+                    }else{
+                        sum -= $(item).parents("li").find('.totalAll').html()*1;
+                    }
+                    
+                })
+                
+                $total_price.html(sum);
+                console.log($sCheck.parents("li").attr("date-guid"));
+
             })
             // 点击单个li，高亮当前li
             $btn.on("click","li",function(){
                 $(this).toggleClass('selected');
                 $(this).find(":checkbox").prop("checked",$(this).hasClass('selected'));
+              
+                console.log($(this).find(":checkbox"));
+                    if($(this).find(":checkbox")[0].checked){
+                        sum += $(this).find('.totalAll').html()*1;
+                        console.log(sum);
+                    }else{
+                        sum -= $(this).find('.totalAll').html()*1;
+                    }
+                    
+                $total_price.html(sum);
                 changeAllChecked();
+
             })
             // 5.封装函数，判断$sCheck的元素个数与被选中的多选框的个数，如果一致，总选框状态true。如果不一致，就为false
             function changeAllChecked(){
@@ -199,11 +226,9 @@ jQuery(function($){
                 $sCheck.each((idx,item)=>{
                     if(item.checked){
                         var id = $(item).parents("li").attr('date-guid')*1;
-                        console.log(id);
+                      
                         $.get('../api/cart_del.php',{id:id},function(data){
-                            // console.log(data);
-                            // var res=JSON.parse(data);
-                            // render(res);
+                            
                         })
                         $(item).parents('li').remove();
                     }
@@ -221,6 +246,22 @@ jQuery(function($){
 
 
     })
+
+     var $home_qty=$(".home_qty");
+     var $c_qty=$(".c_qty");
+        $.ajax({
+            type:"get",
+            url:"../api/cart.php",
+            data:{
+
+            },
+            success:function(data){
+                var res=JSON.parse(data);
+                console.log(res.length);
+                $home_qty.html(res.length);
+                $c_qty.html(res.length);
+            }
+        })
     
 
 

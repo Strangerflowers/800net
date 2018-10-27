@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-10-24 20:45:34
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-26 21:13:15
+* @Last Modified time: 2018-10-27 18:00:09
 */
 
 jQuery(function($){
@@ -34,8 +34,6 @@ jQuery(function($){
                                 <img class="small2" src="${obj.img2}" data-big="${obj.img2}"  />
                                 <img class="small3" src="${obj.img3}" data-big="${obj.img3}"  />
                                 <img class="small4" src="${obj.img4}" data-big="${obj.img4}" />
-                                <img class="small5" src="${obj.img5}"  data-big="${obj.img5}"/>
-                                <img  class="small6"src="${obj.img6}"  data-big="${obj.img6}" />
                             </div>`
 
             // 放大镜插件
@@ -103,6 +101,7 @@ jQuery(function($){
 
             console.log(obj);
             // var tocart=document.querySelector(".add2cart");
+            // 点击加入购物车按钮，发起ajax请求，获取购物车已存在的商品，进行遍历，如果当前的商品已在购物车中，则让当前的qty.value 加上购物车中的数量，如果不存在，则将其商品信息加入购物车
             $(".add2cart").on("click",function(event){
                
 
@@ -118,8 +117,24 @@ jQuery(function($){
                             return index.id===params;
                         });
                         console.log(idx);
+                        
                         if(idx.length >0){
-                            idx[0].qty++;
+                            
+                            var num= qty.value *1+ Number(idx[0].qty);
+                            console.log(Number(idx[0].qty));
+                            $.ajax({
+                                type:"get",
+                                url:"../api/cart_del.php",
+                                data:{
+                                    qty:num,
+                                    currentId:params
+                                },
+                                success:function(data){
+
+                                }
+                            })
+                            location.href="../html/cart.html";
+
                         }else{
                             var target =event.target;
                             console.log(target.className);

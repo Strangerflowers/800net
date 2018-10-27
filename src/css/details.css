@@ -348,6 +348,7 @@
 .home .details .details_content .details_pic .details_right .newslist {
   width: 549px;
   height: 520px;
+  display: inline-block;
 }
 
 .home .details .details_content .details_pic .details_right .newslist .new_head {
@@ -512,6 +513,17 @@
 
 .home .details .details_content .details_pic .details_right .evaluate {
   float: right;
+  width: 190px;
+}
+
+.home .big {
+  width: 100%;
+}
+
+.home .big a, .home .big .side_nav .side_content .side_bottom em, .home .side_nav .side_content .side_bottom .big em {
+  display: block;
+  width: 980px;
+  margin: 0 auto;
 }
 
 .home .side_nav {

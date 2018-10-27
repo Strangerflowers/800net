@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-10-23 20:02:09
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-26 09:13:07
+* @Last Modified time: 2018-10-27 17:14:08
 */
 
 jQuery(function($){
@@ -94,7 +94,7 @@ jQuery(function($){
             },
             success:function(data){
                 // var res=JSON.parse(data);
-                location.href="../login.html";
+                location.href="../html/login.html";
                 
             }
         })

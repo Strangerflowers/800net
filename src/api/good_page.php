@@ -3,8 +3,9 @@
  * @Author: Marte
  * @Date:   2018-10-26 10:19:34
  * @Last Modified by:   Marte
- * @Last Modified time: 2018-10-26 11:14:40
+ * @Last Modified time: 2018-10-27 17:08:40
  */
+
 
 
 include 'connect.php';
@@ -28,3 +29,6 @@ $dataArr=array_slice($res,($pageNo-1)*$qty,$qty);
 
     echo json_encode($resArr,JSON_UNESCAPED_UNICODE);
 
+
+
+?>
