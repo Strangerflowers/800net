@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-10-24 20:45:34
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-27 18:00:09
+* @Last Modified time: 2018-10-28 10:35:03
 */
 
 jQuery(function($){
@@ -102,72 +102,180 @@ jQuery(function($){
             console.log(obj);
             // var tocart=document.querySelector(".add2cart");
             // 点击加入购物车按钮，发起ajax请求，获取购物车已存在的商品，进行遍历，如果当前的商品已在购物车中，则让当前的qty.value 加上购物车中的数量，如果不存在，则将其商品信息加入购物车
-            $(".add2cart").on("click",function(event){
-               
+            
 
-               $.ajax({
-                    type:"get",
-                    url:"../api/cart.php",
-                    data:{},
-                    success:function(data){
-                        var res=JSON.parse(data);
-                        // console.log(res);
-                        var idx=res.filter(function(index){
-                            // console.log(index.id,params);
-                            return index.id===params;
-                        });
-                        console.log(idx);
-                        
-                        if(idx.length >0){
-                            
-                            var num= qty.value *1+ Number(idx[0].qty);
-                            console.log(Number(idx[0].qty));
+             $(".add2cart").on("click",function(event){
+               // 加入购物车动画
+                var big=document.querySelector(".big_pic");
+                var Img=big.children[0];
+                var myCar=document.querySelector(".home_qty");
+                var cloneImg = Img.cloneNode();
+                    cloneImg.classList.add('clone-img');
+                    cloneImg.style.left = Img.offsetLeft+Img.offsetWidth + 'px';
+                    // console.log('678',Img.offsetLeft);
+                    cloneImg.style.top = Img.offsetTop + 'px';
+
+                    // 把复制的图片写入页面
+                    document.body.appendChild(cloneImg);
+
+                     animate(cloneImg,{left:myCar.offsetLeft,width:20,height:20},function(){
+                        // // 删除用于动画的图片
+                        document.body.removeChild(cloneImg);
+
+                        // 点击加入购物车后延迟3000毫秒，再跳转进入购物车
+                        setTimeout(function(){
                             $.ajax({
                                 type:"get",
-                                url:"../api/cart_del.php",
-                                data:{
-                                    qty:num,
-                                    currentId:params
-                                },
+                                url:"../api/cart.php",
+                                data:{},
                                 success:function(data){
+                                    var res=JSON.parse(data);
+                                    // console.log(res);
+                                    var idx=res.filter(function(index){
+                                        // console.log(index.id,params);
+                                        return index.id===params;
+                                    });
+                                    console.log(idx);
+                                    
+                                    if(idx.length >0){
+                                        
+                                        var num= qty.value *1+ Number(idx[0].qty);
+                                        console.log(Number(idx[0].qty));
+                                        $.ajax({
+                                            type:"get",
+                                            url:"../api/cart_del.php",
+                                            data:{
+                                                qty:num,
+                                                currentId:params
+                                            },
+                                            success:function(data){
 
-                                }
-                            })
-                            location.href="../html/cart.html";
+                                            }
+                                        })
+                                            location.href="../html/cart.html";
 
-                        }else{
-                            var target =event.target;
-                            console.log(target.className);
-                            if(target.className==="add2cart"){
-                                $.ajax({
-                                    type:"get",
-                                    url:"../api/details.php",
-                                    data:{
-                                        currentId:obj.id,
-                                        Img:obj.imgurl,
-                                        username:obj.name,
-                                        color:obj.color,
-                                        size:obj.size,
-                                        qty:qty.value,
-                                        price:obj.price,
-                                        sale:obj.sale,
-                                    },
-                                    success:function(data){
-                                        console.log(data);
-                                        location.href="../html/cart.html";
-                                    }
+                                         }else{
+                                            var target =event.target;
+                                            console.log(target.className);
+                                            if(target.className==="add2cart"){
+                                                $.ajax({
+                                                    type:"get",
+                                                    url:"../api/details.php",
+                                                    data:{
+                                                        currentId:obj.id,
+                                                        Img:obj.imgurl,
+                                                        username:obj.name,
+                                                        color:obj.color,
+                                                        size:obj.size,
+                                                        qty:qty.value,
+                                                        price:obj.price,
+                                                        sale:obj.sale,
+                                                    },
+                                                    success:function(data){
+                                                        console.log(data);
+                                                        location.href="../html/cart.html";
+                                                    }
+                                                })
+                                            }
+                                        }
+                                     }
                                 })
-                            }
-                        }
-                    }
-               })
-                
+
+                         },300);
+                        
+                    });
             })
 
 
 
-        }
-    })
+            var $home_qty=$(".home_qty");
+            var $c_qty=$(".c_qty");
+                $.ajax({
+                    type:"get",
+                    url:"../api/cart.php",
+                    data:{
+                    },
+                    success:function(data){
+                        var res=JSON.parse(data);
+                        console.log(res.length);
+                        $home_qty.html(res.length);
+                        $c_qty.html(res.length);
+                    }
+                })
+         
+
+
+
+
+
+
+
+                    // $(".add2cart").on("click",function(event){
+                       
+
+                    //    $.ajax({
+                    //         type:"get",
+                    //         url:"../api/cart.php",
+                    //         data:{},
+                    //         success:function(data){
+                    //             var res=JSON.parse(data);
+                    //             // console.log(res);
+                    //             var idx=res.filter(function(index){
+                    //                 // console.log(index.id,params);
+                    //                 return index.id===params;
+                    //             });
+                    //             console.log(idx);
+                                
+                    //             if(idx.length >0){
+                                    
+                    //                 var num= qty.value *1+ Number(idx[0].qty);
+                    //                 console.log(Number(idx[0].qty));
+                    //                 $.ajax({
+                    //                     type:"get",
+                    //                     url:"../api/cart_del.php",
+                    //                     data:{
+                    //                         qty:num,
+                    //                         currentId:params
+                    //                     },
+                    //                     success:function(data){
+
+                    //                     }
+                    //                 })
+                    //                 location.href="../html/cart.html";
+
+                    //             }else{
+                    //                 var target =event.target;
+                    //                 console.log(target.className);
+                    //                 if(target.className==="add2cart"){
+                    //                     $.ajax({
+                    //                         type:"get",
+                    //                         url:"../api/details.php",
+                    //                         data:{
+                    //                             currentId:obj.id,
+                    //                             Img:obj.imgurl,
+                    //                             username:obj.name,
+                    //                             color:obj.color,
+                    //                             size:obj.size,
+                    //                             qty:qty.value,
+                    //                             price:obj.price,
+                    //                             sale:obj.sale,
+                    //                         },
+                    //                         success:function(data){
+                    //                             console.log(data);
+                    //                             location.href="../html/cart.html";
+                    //                         }
+                    //                     })
+                    //                 }
+                    //             }
+                    //         }
+                    //    })
+                        
+                    // })
+
+
+
+                }
+            })
  
 
    

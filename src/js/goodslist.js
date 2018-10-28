@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-10-24 17:15:49
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-10-27 18:13:14
+* @Last Modified time: 2018-10-28 14:43:13
 */
 
 
@@ -78,411 +78,398 @@ jQuery(function($){
                 }
                 
             }
+
+        }
+    })
+    
+    // 价格排序：
+    var show = true;
+    $(".price").on("click",function(){
+
+            if(show){
+                $.ajax({
+                        type:"get",
+                        url:"../api/gorder.php",
+                        data:{
+                            price:show
+                        },
+                        success:function(data){
+                            // console.log(data);
+                        var res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                        // console.log((pageNo-1)*qty,pageNo*qty);
+                        
+                            render(res);
+                            function render($arr){
+                                // console.log($arr)
+                                var $res='';
+                                $res=$.map($arr,function(item,idx){
+                                    return  `<li date-id="${item.id}">
+                                                    <a href="#">
+                                                        <img src="${item.imgurl}" alt="" \ />
+                                                    </a>
+                                                    <p><a href="#">${item.name}</a></p>
+                                                    <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
+                                                    <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
+                                                    <span class="find">找相似</span>
+                                                    </div>
+                                                </li>`
+                                }).join("");
+
+                                $ul_list.empty().append($res);
+                               
+                            }
+                            var page=document.querySelector(".page");
+                            var spans=page.children;
+                                page.onclick=function(e){
+                                    if(e.target.tagName.toLowerCase()==="span"){
+                                        pageNo = e.target.innerHTML;
+                                        for(let i=0;i<spans.length;i++){
+                                        spans[i].className='';
+                                        }
+                                        e.target.className='active';
+                                        res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                                            render(res);
+                                        console.log(pageNo);
+                                       
+                                    }
+                                    
+                                }
+                           
+                        }
+                })
+               
+            }else if(!show){
+                $.ajax({
+                    type:"get",
+                    url:"../api/gorder.php",
+                    data:{
+                        price:show
+                    },
+                    success:function(data){
+                        // console.log(data);
+                    var res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                    // console.log((pageNo-1)*qty,pageNo*qty);
+                    
+                        render(res);
+                        function render($arr){
+                            // console.log($arr)
+                            var $res='';
+                            $res=$.map($arr,function(item,idx){
+                                return  `<li date-id="${item.id}">
+                                                <a href="#">
+                                                    <img src="${item.imgurl}" alt="" \ />
+                                                </a>
+                                                <p><a href="#">${item.name}</a></p>
+                                                <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
+                                                <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
+                                                <span class="find">找相似</span>
+                                                </div>
+                                            </li>`
+                            }).join("");
+
+                            $ul_list.empty().append($res);
+                           
+                        }
+                        var page=document.querySelector(".page");
+                        var spans=page.children;
+                            page.onclick=function(e){
+                                if(e.target.tagName.toLowerCase()==="span"){
+                                    pageNo = e.target.innerHTML;
+                                    for(let i=0;i<spans.length;i++){
+                                    spans[i].className='';
+                                    }
+                                    e.target.className='active';
+                                    res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                                        render(res);
+                                    console.log(pageNo);
+                                   
+                                }
+                                
+                            }
+                       
+                    }
+                })
+            }
+           
+            show = !show;
+    })
+
+
+    // 时间排序
+    var data = true;
+    $(".newest").on("click",function(){
+
+            if(data){
+                $.ajax({
+                        type:"get",
+                        url:"../api/gorder.php",
+                        data:{
+                            data:data
+                        },
+                        success:function(data){
+                            // console.log(data);
+                        var res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                        // console.log((pageNo-1)*qty,pageNo*qty);
+                        
+                            render(res);
+                            function render($arr){
+                                // console.log($arr)
+                                var $res='';
+                                $res=$.map($arr,function(item,idx){
+                                    return  `<li date-id="${item.id}">
+                                                    <a href="#">
+                                                        <img src="${item.imgurl}" alt="" \ />
+                                                    </a>
+                                                    <p><a href="#">${item.name}</a></p>
+                                                    <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
+                                                    <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
+                                                    <span class="find">找相似</span>
+                                                    </div>
+                                                </li>`
+                                }).join("");
+
+                                $ul_list.empty().append($res);
+                               
+                            }
+                            var page=document.querySelector(".page");
+                            var spans=page.children;
+                                page.onclick=function(e){
+                                    if(e.target.tagName.toLowerCase()==="span"){
+                                        pageNo = e.target.innerHTML;
+                                        for(let i=0;i<spans.length;i++){
+                                        spans[i].className='';
+                                        }
+                                        e.target.className='active';
+                                        res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                                            render(res);
+                                        console.log(pageNo);
+                                       
+                                    }
+                                    
+                                }
+                           
+                        }
+                })
+               
+            }else if(!data){
+                $.ajax({
+                    type:"get",
+                    url:"../api/gorder.php",
+                    data:{
+                        data:data
+                    },
+                    success:function(data){
+                        // console.log(data);
+                    var res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                    // console.log((pageNo-1)*qty,pageNo*qty);
+                    
+                        render(res);
+                        function render($arr){
+                            // console.log($arr)
+                            var $res='';
+                            $res=$.map($arr,function(item,idx){
+                                return  `<li date-id="${item.id}">
+                                                <a href="#">
+                                                    <img src="${item.imgurl}" alt="" \ />
+                                                </a>
+                                                <p><a href="#">${item.name}</a></p>
+                                                <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
+                                                <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
+                                                <span class="find">找相似</span>
+                                                </div>
+                                            </li>`
+                            }).join("");
+
+                            $ul_list.empty().append($res);
+                           
+                        }
+                        var page=document.querySelector(".page");
+                        var spans=page.children;
+                            page.onclick=function(e){
+                                if(e.target.tagName.toLowerCase()==="span"){
+                                    pageNo = e.target.innerHTML;
+                                    for(let i=0;i<spans.length;i++){
+                                    spans[i].className='';
+                                    }
+                                    e.target.className='active';
+                                    res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                                        render(res);
+                                    console.log(pageNo);
+                                   
+                                }
+                                
+                            }
+                       
+                    }
+                })
+            }
+           
+            data = !data;
+    })
+
+
+
+    // 销量排序
+    var xl = true;
+    $(".good_sale").on("click",function(){
+
+            if(xl){
+                $.ajax({
+                        type:"get",
+                        url:"../api/gorder.php",
+                        data:{
+                            xl:xl
+                        },
+                        success:function(data){
+                            // console.log(data);
+                        var res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                        // console.log((pageNo-1)*qty,pageNo*qty);
+                        
+                            render(res);
+                            function render($arr){
+                                // console.log($arr)
+                                var $res='';
+                                $res=$.map($arr,function(item,idx){
+                                    return  `<li date-id="${item.id}">
+                                                    <a href="#">
+                                                        <img src="${item.imgurl}" alt="" \ />
+                                                    </a>
+                                                    <p><a href="#">${item.name}</a></p>
+                                                    <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
+                                                    <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
+                                                    <span class="find">找相似</span>
+                                                    </div>
+                                                </li>`
+                                }).join("");
+
+                                $ul_list.empty().append($res);
+                               
+                            }
+                            var page=document.querySelector(".page");
+                            var spans=page.children;
+                                page.onclick=function(e){
+                                    if(e.target.tagName.toLowerCase()==="span"){
+                                        pageNo = e.target.innerHTML;
+                                        for(let i=0;i<spans.length;i++){
+                                        spans[i].className='';
+                                        }
+                                        e.target.className='active';
+                                        res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                                            render(res);
+                                        console.log(pageNo);
+                                       
+                                    }
+                                    
+                                }
+                           
+                        }
+                })
+               
+            }else if(!xl){
+                $.ajax({
+                    type:"get",
+                    url:"../api/gorder.php",
+                    data:{
+                        xl:xl
+                    },
+                    success:function(data){
+                        // console.log(data);
+                    var res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                    // console.log((pageNo-1)*qty,pageNo*qty);
+                    
+                        render(res);
+                        function render($arr){
+                            // console.log($arr)
+                            var $res='';
+                            $res=$.map($arr,function(item,idx){
+                                return  `<li date-id="${item.id}">
+                                                <a href="#">
+                                                    <img src="${item.imgurl}" alt="" \ />
+                                                </a>
+                                                <p><a href="#">${item.name}</a></p>
+                                                <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
+                                                <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
+                                                <span class="find">找相似</span>
+                                                </div>
+                                            </li>`
+                            }).join("");
+
+                            $ul_list.empty().append($res);
+                           
+                        }
+                        var page=document.querySelector(".page");
+                        var spans=page.children;
+                            page.onclick=function(e){
+                                if(e.target.tagName.toLowerCase()==="span"){
+                                    pageNo = e.target.innerHTML;
+                                    for(let i=0;i<spans.length;i++){
+                                    spans[i].className='';
+                                    }
+                                    e.target.className='active';
+                                    res=JSON.parse(data).slice((pageNo-1)*qty,(pageNo)*qty);
+                                        render(res);
+                                    console.log(pageNo);
+                                   
+                                }
+                                
+                            }
+                       
+                    }
+                })
+            }
+           
+            xl = !xl;
+    })
+   
+    // 点击商品，找到当前被点击的商品的id，发起请求，响应后将id传给详情页：
+    var goodslist = document.querySelector(".ul_list");
+    var status=[200,304];
+        goodslist.onclick=function(e){
+            e = e|| window.event;
+            var target=e.target;
+            if(target.parentElement.parentElement.tagName==="LI"){
+                var currentId = target.parentElement.parentElement.getAttribute("date-id");
+                console.log(currentId);
+                var xhr_id=new XMLHttpRequest();
+                xhr_id.onload=function(){
+                    if(status.indexOf(xhr_id.status) !=-1){
+                        console.log(xhr_id.responseText);
+                        location.href = "details.html?"+encodeURI(currentId);  
+                    }
+
+                }
+                xhr_id.open('get','../api/goodslist_url.php?currentId='+currentId,true);
+                xhr_id.send();
+
+            }        
         }
 
 
+    var toTop = document.querySelector('.toTop');
+        // 点击返回顶部
+        toTop.onclick = function () {
+            var timer = setInterval(function () {
+                var speed = Math.ceil(window.scrollY / 5);
+                scrollBy(0, -speed);
+                if (window.scrollY <= 0) {
+                    clearInterval(timer);
+                }
+            }, 30)
+        }
+
+
+    var $home_qty=$(".home_qty");
+    $.ajax({
+        type:"get",
+        url:"../api/cart.php",
+        data:{
+
+        },
+        success:function(data){
+            var res=JSON.parse(data);
+            console.log(res.length);
+            $home_qty.html(res.length);
+        }
     })
-            var $home_qty=$(".home_qty");
-            $.ajax({
-                type:"get",
-                url:"../api/cart.php",
-                data:{
 
-                },
-                success:function(data){
-                    var res=JSON.parse(data);
-                    console.log(res.length);
-                    $home_qty.html(res.length);
-                }
-            })
-
-            var show = true;
-            $(".price").on("click",function(){
-
-                    if(show){
-                        $.ajax({
-                            type:"get",
-                            url:"../api/gorder.php",
-                            data:{
-                                price:show
-                            },
-                            success:function(data){
-                                
-                                var res=JSON.parse(data).slice(0,12);
-                                // console.log(res);
-                                render(res);
-                                function render($arr){
-                                    // console.log($arr)
-                                    var $res='';
-                                    $res=$.map($arr,function(item,idx){
-                                        return  `<li date-id="${item.id}">
-                                                        <a href="#">
-                                                            <img src="${item.imgurl}" alt="" \ />
-                                                        </a>
-                                                        <p><a href="#">${item.name}</a></p>
-                                                        <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
-                                                        <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
-                                                        <span class="find">找相似</span>
-                                                        </div>
-                                                    </li>`
-                                    }).join("");
-
-                                    $ul_list.empty().append($res);
-                                   
-                                }
-                            }
-                        })
-                    }else if(!show){
-                        $.ajax({
-                            type:"get",
-                            url:"../api/gorder.php",
-                            data:{
-                                price:show
-                            },
-                            success:function(data){
-                                console.log(888);
-                                // var res=JSON.parse(data);
-                                var res=JSON.parse(data).slice(0,12);
-                                render(res);
-                                function render($arr){
-                                    var $res='';
-                                    $res=$.map($arr,function(item,idx){
-                                        return `<li date-id="${item.id}">
-                                                        <a href="#">
-                                                            <img src="${item.imgurl}" alt="" \ />
-                                                        </a>
-                                                        <p><a href="#">${item.name}</a></p>
-                                                        <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
-                                                        <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
-                                                        <span class="find">找相似</span>
-                                                        </div>
-                                                    </li>`
-                                    }).join("");
-                                    $ul_list.empty().append($res);
-
-                                }
-                            }
-                        })
-                    }
-                   
-                    show = !show;
-            })
-
-
-
-            var data = true;
-            $(".newest").on("click",function(){
-
-                    if(data){
-                        $.ajax({
-                            type:"get",
-                            url:"../api/gorder.php",
-                            data:{
-                                data:data
-                            },
-                            success:function(data){
-                                
-                                var res=JSON.parse(data).slice(0,12);
-                                console.log(res);
-                                render(res);
-                                function render($arr){
-                                    // console.log($arr)
-                                    var $res='';
-                                    $res=$.map($arr,function(item,idx){
-                                        return  `<li date-id="${item.id}">
-                                                        <a href="#">
-                                                            <img src="${item.imgurl}" alt="" \ />
-                                                        </a>
-                                                        <p><a href="#">${item.name}</a></p>
-                                                        <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
-                                                        <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
-                                                        <span class="find">找相似</span>
-                                                        </div>
-                                                    </li>`
-                                    }).join("");
-
-                                    $ul_list.empty().append($res);
-                                   
-                                }
-                            }
-                        })
-                    }else if(!data){
-                        $.ajax({
-                            type:"get",
-                            url:"../api/gorder.php",
-                            data:{
-                                data:data
-                            },
-                            success:function(data){
-                                console.log(888);
-                                // var res=JSON.parse(data);
-                                var res=JSON.parse(data).slice(0,12);
-                                render(res);
-                                function render($arr){
-                                    var $res='';
-                                    $res=$.map($arr,function(item,idx){
-                                        return `<li date-id="${item.id}">
-                                                        <a href="#">
-                                                            <img src="${item.imgurl}" alt="" \ />
-                                                        </a>
-                                                        <p><a href="#">${item.name}</a></p>
-                                                        <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
-                                                        <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
-                                                        <span class="find">找相似</span>
-                                                        </div>
-                                                    </li>`
-                                    }).join("");
-                                    $ul_list.empty().append($res);
-
-                                }
-                            }
-                        })
-                    }
-                    data = !data;
-            })
-
-            
-             var xl = true;
-            $(".good_sale").on("click",function(){
-
-                    if(xl){
-                        $.ajax({
-                            type:"get",
-                            url:"../api/gorder.php",
-                            data:{
-                                xl:xl
-                            },
-                            success:function(data){
-                                
-                                var res=JSON.parse(data).slice(0,12);
-                                console.log(res);
-                                render(res);
-                                function render($arr){
-                                    // console.log($arr)
-                                    var $res='';
-                                    $res=$.map($arr,function(item,idx){
-                                        return  `<li date-id="${item.id}">
-                                                        <a href="#">
-                                                            <img src="${item.imgurl}" alt="" \ />
-                                                        </a>
-                                                        <p><a href="#">${item.name}</a></p>
-                                                        <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
-                                                        <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
-                                                        <span class="find">找相似</span>
-                                                        </div>
-                                                    </li>`
-                                    }).join("");
-
-                                    $ul_list.empty().append($res);
-                                   
-                                }
-                            }
-                        })
-                    }else if(!xl){
-                        $.ajax({
-                            type:"get",
-                            url:"../api/gorder.php",
-                            data:{
-                                xl:xl
-                            },
-                            success:function(data){
-                                console.log(888);
-                                // var res=JSON.parse(data);
-                                var res=JSON.parse(data).slice(0,12);
-                                render(res);
-                                function render($arr){
-                                    var $res='';
-                                    $res=$.map($arr,function(item,idx){
-                                        return `<li date-id="${item.id}">
-                                                        <a href="#">
-                                                            <img src="${item.imgurl}" alt="" \ />
-                                                        </a>
-                                                        <p><a href="#">${item.name}</a></p>
-                                                        <div class="youhui">${item.sale}<span class="fr">剩余4天</span></div>
-                                                        <div class="shangp"><i></i><span class="baoyou">包邮</span><span class="fr">[详情]</span><span class="fr">收藏</span>
-                                                        <span class="find">找相似</span>
-                                                        </div>
-                                                    </li>`
-                                    }).join("");
-                                    $ul_list.empty().append($res);
-
-                                }
-                            }
-                        })
-                    }
-                    xl = !xl;
-            })
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-                // 点击价格按钮排序
-                // var priceBtn = document.getElementsByClassName("price")[0];
-                // var price;
-                // //声明一个变量，告知当前是价格升序还是降序排名
-                // var upLogoP = true;
-                // priceBtn.onclick = function(){
-                //     $.ajax({
-                //         type:"get",
-                //         url:"../api/gorder.php",
-                //         data:{
-                //             price:upLogoP
-                //         },
-                //         success:function(data){
-                //             var res=JSON.parse(data);
-                //             render(res);
-
-
-
-
-                //             // })
-    
-                //         }
-                //     })
-                //     // if(upLogoP){
-                //     //     var priu=$arr.sort(function(a,b){
-                //     //         return b.sale - a.sale;
-                //     //     });
-                //     //     // console.log('priu', priu)
-                //     //     render(priu);
-                //     // }
-                //     // else if(!upLogoP){
-                //     //     var pril=$arr.sort(function(a,b){
-                //     //         return a.sale- b.sale;
-                //     //     });
-                //     //     render(pril);
-                //     // }
-                //     // upLogoP = !upLogoP;
-                // }
-                // //点击最新按钮排序（按时间排序）
-                // var dateBtn = document.getElementsByClassName("newest")[0];
-                
-                // //声明一个变量，告知当前日期是升序还是降序排名
-                // var upLogoD = true;
-                // dateBtn.onclick = function(){
-                //     if(upLogoD){
-                //         var dateup=$arr.sort(function(a,b){
-                //         return new Date(a.reg_time).getTime() - new Date(b.reg_time).getTime();
-                //         });
-                //         render(dateup);
-                       
-                //     }
-                //     else if(!upLogoD){
-                //         var datel=$arr.sort(function(a,b){
-                //         return new Date(b.reg_time).getTime() - new Date(a.reg_time).getTime();
-                //         });
-                       
-                //         render(datel);
-                       
-                //     }
-                //     upLogoD = !upLogoD;
-                // }
-
-
-
-     // $.ajax({
-     //        type:"get",
-     //        url:"../api/goodslist.php",
-     //        data:{},
-     //        success:function(data){
-     //            $arr=JSON.parse(data);
-     //            //点击价格按钮排序
-     //            var priceBtn = document.getElementsByClassName("price")[0];
-     //            //声明一个变量，告知当前是价格升序还是降序排名
-     //            var upLogoP = true;
-     //            priceBtn.onclick = function(){
-     //                // console.log(upLogoP);
-     //                if(upLogoP){
-     //                    var priu=$arr.sort(function(a,b){
-     //                        return b.sale - a.sale;
-     //                    });
-     //                    // console.log('priu', priu)
-     //                    render(priu);
-     //                }
-     //                else if(!upLogoP){
-     //                    var pril=$arr.sort(function(a,b){
-     //                        return a.sale- b.sale;
-     //                    });
-     //                    render(pril);
-     //                }
-     //                upLogoP = !upLogoP;
-     //            }
-     //            //点击最新按钮排序（按时间排序）
-     //            var dateBtn = document.getElementsByClassName("newest")[0];
-                
-     //            //声明一个变量，告知当前日期是升序还是降序排名
-     //            var upLogoD = true;
-     //            dateBtn.onclick = function(){
-     //                if(upLogoD){
-     //                    var dateup=$arr.sort(function(a,b){
-     //                    return new Date(a.reg_time).getTime() - new Date(b.reg_time).getTime();
-     //                    });
-     //                    render(dateup);
-                       
-     //                }
-     //                else if(!upLogoD){
-     //                    var datel=$arr.sort(function(a,b){
-     //                    return new Date(b.reg_time).getTime() - new Date(a.reg_time).getTime();
-     //                    });
-                       
-     //                    render(datel);
-                       
-     //                }
-     //                upLogoD = !upLogoD;
-     //            }
-
-     //        }
-     //    })
-   
-    
-    
-
-    
-
-     var goodslist = document.querySelector(".ul_list");
-     var status=[200,304];
-                goodslist.onclick=function(e){
-                    e = e|| window.event;
-                    var target=e.target;
-                    if(target.parentElement.parentElement.tagName==="LI"){
-                        var currentId = target.parentElement.parentElement.getAttribute("date-id");
-                        console.log(currentId);
-                        var xhr_id=new XMLHttpRequest();
-                        xhr_id.onload=function(){
-                            if(status.indexOf(xhr_id.status) !=-1){
-                                console.log(xhr_id.responseText);
-                                location.href = "details.html?"+encodeURI(currentId);  
-                            }
-
-                        }
-                        xhr_id.open('get','../api/goodslist_url.php?currentId='+currentId,true);
-                        xhr_id.send();
-   
-                    }        
-                }
-    // var $volum=$(".good_sale");
-    // $volum.on("click",function(e){
-    //     var 
-    //     $.ajax({
-    //        type:"get",
-    //        url:"../api/gorder.php",
-    //        data:{
-
-    //        },
-    //        success:function(data){
-    //            console.log(data);
-    //        }
-    //     })
-    // })
 })

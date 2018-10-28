@@ -3,7 +3,7 @@
  * @Author: Marte
  * @Date:   2018-10-26 10:19:34
  * @Last Modified by:   Marte
- * @Last Modified time: 2018-10-27 17:05:39
+ * @Last Modified time: 2018-10-28 14:44:27
  */
 
 include 'connect.php';
@@ -13,6 +13,9 @@ $price=isset($_GET["price"]) ? $_GET["price"] : "";
 $data=isset($_GET["data"]) ? $_GET["data"] : "";
 $xl=isset($_GET["xl"]) ? $_GET["xl"] : "";
 
+$pageNo=isset($_GET["pageNo"]) ? $_GET["pageNo"] : "";
+$qty=isset($_GET["qty"]) ? $_GET["qty"] : "";
+
 
 // $sql = 'select * from goodslist';
 
@@ -20,6 +23,7 @@ $xl=isset($_GET["xl"]) ? $_GET["xl"] : "";
 if($price==="true"){
 
     $sql = 'select * from goodslist order by sale desc';
+    // $sql='select * from goodslist';
     
 
 }else if($price=='false'){
@@ -44,16 +48,12 @@ if($xl=="true"){
     $sql = 'select * from goodslist order by s_volum asc';
 
 }
-    // var_dump($sql);
+    
     $result=$con->query($sql);
      
     $res = $result->fetch_all(MYSQLI_ASSOC);
 
     echo json_encode($res,JSON_UNESCAPED_UNICODE);
-
-
-
-
 
 
     
