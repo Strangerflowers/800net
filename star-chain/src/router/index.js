@@ -12,6 +12,8 @@ import Goods from '../page/Goodslist/goodslist.vue';
 
 
 const routes = [
+	// {path:'/',redirect:{name:'Home'}}
+	{path:'/',redirect:{name:'Home'}},  //重定向
 	{name:'Home',path:'/home',component:Home},
 	{name:'Classify',path:'/classify',component:Classify},
 	{name:'Cart',path:'/cart',component:Cart},

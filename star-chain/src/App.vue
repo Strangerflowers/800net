@@ -22,10 +22,35 @@ import Vue from 'vue';
 import Mint from 'mint-ui';
 Vue.use(Mint);
 import 'mint-ui/lib/style.css';
-
-
+  // console.log(this.$axios.interceptors)
 // 把axios写入vue的原型对象，方便后面调用
 Vue.prototype.$axios = axios;
+
+
+// loading
+import { Indicator } from 'mint-ui';
+
+
+console.log(this);
+// http请求拦截器
+axios.interceptors.request.use((config) => {
+    Indicator.open({
+        text: '加载中...',
+        spinnerType: 'fading-circle'
+    });
+  //  在发送请求之前做一些事情
+    return config;
+}, (err) => {
+    return Promise.reject(err)
+})
+// http响应拦截器
+axios.interceptors.response.use((response) => {
+    Indicator.close(); //关闭loading
+    //  用响应数据做一些事情
+    return response;
+}, (err) => {
+    return Promise.reject(err);
+})
 
 export default {
   name: 'App',

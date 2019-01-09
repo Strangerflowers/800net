@@ -6,6 +6,9 @@ import App from './App'
 import '../font/iconfont.css'
 import router from './router/index.js';
 
+
+
+
 // import './styles/base.scss';
 Vue.config.productionTip = false
 
